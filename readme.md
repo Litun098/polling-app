@@ -1,10 +1,10 @@
 #### Polling app
 
-required packages
+Install required packages
 
     npm i
 
 start 
+
     npm start
 
-    
