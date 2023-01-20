@@ -1,4 +1,4 @@
-#### Polling app
+### Polling app
 
 Install required packages
 
@@ -8,3 +8,5 @@ start
 
     npm start
 
+
+<!-- 2 -->
