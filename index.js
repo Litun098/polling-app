@@ -3,11 +3,13 @@ const mongoose = require('mongoose');
 const apiRouter = require('./src/routes/index');
 const User = require('./src/models/user');
 const { connect } = require('./src/config/database');
+const bodyParser = require('body-parser');
+const passport = require('passport')
 require('dotenv').config();
 
 
 const app = express();
-app.use('/api',apiRouter);
+app.use('/api',passport.authenticate('jwt',{session:false}),apiRouter);
 
 
 const port = process.env.PORT || 3000
