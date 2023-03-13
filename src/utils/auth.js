@@ -1,13 +1,13 @@
 const passport = require('passport');
-const LocalStrategy = require('passports-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 const jwtStrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 const User = require('../models/user');
 
 passport.use('signup', new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password'
-},
+        usernameField : 'email',
+        passwordField: 'password'
+    },
     async (email, password, done) => {
         try {
             const user = await User.create({ email, password });

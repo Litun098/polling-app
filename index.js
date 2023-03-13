@@ -5,12 +5,15 @@ const User = require('./src/models/user');
 const { connect } = require('./src/config/database');
 const bodyParser = require('body-parser');
 const passport = require('passport')
+require('./src/utils/auth')
 require('dotenv').config();
-
-
+const authRouter = require('./src/routes/authRoutes')
 const app = express();
-app.use('/api',passport.authenticate('jwt',{session:false}),apiRouter);
 
+app.use('/api',passport.authenticate('jwt',{session:false}),apiRouter);
+app.use('/',authRouter);
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 const port = process.env.PORT || 3000
 app.listen(port, async ()=>{
